@@ -1,0 +1,28 @@
+---
+title: "Random Forest"
+author: "Josh Bergstrom"
+format: html
+editor: visual
+---
+
+## Load Libraries
+```{r message=FALSE}
+library(tidymodels)
+library(vroom)
+library(embed)
+library(ranger)
+```
+
+## Load Files
+```{r message=FALSE}
+data <- vroom("bereal_combined.csv")
+```
+
+## Split Data
+```{r message=FALSE}
+set.seed(42)
+data_split <- initial_split(data, prop = 0.8)  # 80% training, 20% testing
+train <- training(data_split)
+test <- testing(data_split)
+```
+
